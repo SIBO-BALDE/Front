@@ -1,0 +1,296 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+/* *{
+  outline: 1px solid red;
+} */
+
+
+.root {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Libre Baskerville', serif;
+  font-family: 'Roboto', sans-serif;
+  position: absolute;
+  
+
+}
+ 
+
+
+.btn-primary, .btn-outline-primary, .btn-primary:active, .btn-primary:visited {
+  background-color:  #A16509 !important;
+  border-color: #A16509 !important;
+}
+.fa-search{
+  color: #fff;
+}
+.fa-search:hover{
+  color: #520909;
+}
+.cart{
+  color:  #fff !important;
+  font-weight: bolder !important;
+  font-size: 2em !important;
+}
+.btn-primary:hover{
+  background-color: rgb(82, 9, 9) !important; 
+}
+
+.d-grid :hover{
+  background-color: rgb(82, 9, 9) !important; 
+}
+
+/* Flex-wrap:wrap indique que les élements doivent etre coupé une fois arrivé à la limite de la premier ligne */
+
+.container{
+
+  margin-top: 0rem;
+  scroll-behavior: inherit;
+  
+
+}
+.mt-3 {
+  margin-top: 0rem  !important;
+  
+}
+
+
+/* *********Products disign************* */
+
+.products-screen{
+ margin: 0 !important;
+ padding: 0 !important;
+ 
+  
+}
+
+.titre{
+  margin-top: 1rem;
+  text-align: center;
+  text-decoration: underline;
+  color: #A16509;
+}
+.products{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+}
+
+
+.product{
+  box-shadow: 5px 5px 3px 1px rgba(0, 0, 0, 0.7);
+  margin: 1rem;
+  
+}
+.product img {
+  width: 100%;
+ 
+}
+.product :hover {
+ opacity: 0.5;
+ transform: scale(1.05);
+ transition: 0.6s;
+}
+.produc-info{
+  padding: 0.5rem;
+  
+}
+
+.rating span{
+  color: #A16509;
+}
+.card-title{
+  color: #A16509;
+  text-decoration: none !important ;
+ 
+}
+
+ 
+
+.img-large {
+  max-width: 100% ;
+}
+
+.link{
+  text-decoration: none !important ;
+}
+/* Pour la taille de l'image sur le cart */
+.img-thumbnail{
+  height: 80px !important;
+}
+
+.small-container {
+  max-width: 600px !important ;
+}
+
+
+
+
+/* *********NAVBAR disign************* */
+.Navbar{
+  background-color: #520909;
+  width: 100%;
+  /* z-index: 1  !important; */
+  height: 82px;
+ margin-bottom: 100px;
+position: fixed;
+z-index: 20;
+
+ 
+}
+/* Sidebar */
+.navbar-brand {
+  font-weight:bold;
+}
+a,ul{
+  
+  text-decoration: none !important;
+  list-style-type: none !important;
+  font-weight: bold;
+}
+.first,.seconde,.third{
+  text-decoration: underline !important;
+  color: #A16509;
+  font-weight: bold;
+}
+
+
+.side-navbar {
+ width: 240px;
+ height: 100%;
+ position: absolute;
+ left: -300px;
+ background-color: #520909;
+ transition: 0.5s;
+ color: white;
+ z-index: 2 !important;
+
+}
+
+.site-container {
+ margin: 0;
+ transition: 0.4s;
+
+}
+.active-cont {
+  margin-left: 240px;
+
+}
+.active-nav {
+  left: 0;
+  right: 0;
+
+}
+
+
+/* *******************Shipping page disign*********************** */
+.checkout-steps > div{
+  border-bottom: #a0a0a0;
+  color: #a0a0a0;
+}
+
+.checkout-steps > div.active {
+  border-bottom: 0.2rem solid #f08000;
+  color: #f08000;
+}
+
+
+
+
+
+
+
+.btn-btn{
+  background-color:  #520909!important;
+  border: 1px solid #520909;
+}
+.btn-btn:hover{
+  background-color: #520909 !important; 
+  border: 1px solid #fff;
+
+}
+.text-bold{
+  font-weight: bold;
+}
+.Form{
+  background-color: green !important; 
+  
+
+}
+.form{
+  text-align: center;
+ }
+ 
+ .input1,.input2,.input3,.input4,.input5{
+   margin-top: 10px;
+ 
+   
+ }
+ .input1,.input2,.input3,.input4{
+ width: 50%;
+ }
+ .input4{
+   height: 50%;
+   padding-bottom: 30px;
+ }
+ .btn-11{
+     margin-top: 10px;
+     margin-bottom: 10px;
+     background-color: #A16509;
+     border: 1px solid #A16509;
+     font-size: 1em;
+     border-radius: 5px;
+     color: white;
+     font-weight: bolder;
+     width: 10%;
+     height: 40px;
+     
+   }
+   .btn-1:hover{
+     background-color: #520909;
+     border: 1px solid #520909 ;
+ }
+ 
+
+/* *******Footer disign********* */
+.container-titre{
+  background-color: #520909 !important;
+  color: #fff;
+  
+}
+.sociau{
+  display: flex;
+  color: #fff;
+}
+.a1,.a2,.a3{
+  margin-left: 10px;
+  color: white;
+  font-size: 2rem;
+}
+.row{
+  margin-left: 0px !important;
+  margin-right: 0px;
+}
+
+
+/* *******ABOUT disign********* */
+
+.about-center{
+text-align: justify;
+
+}
+
+.about-center >card{
+  align-items: center !important;
+}
+.col-6{
+  margin-bottom: 10px !important;
+}
+/* ******* CArroussel disign********* */
+
+.carousel-inner {
+
+
+}
+
