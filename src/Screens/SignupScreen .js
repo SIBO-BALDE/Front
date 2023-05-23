@@ -4,10 +4,11 @@ import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import {Helmet} from 'react-helmet-async'
-import Axios from 'axios'
+
 import { Store } from '../Store'
 import { toast } from 'react-toastify'
 import { getError } from '../Utils'
+import http from '../axios'
 
 
 
@@ -36,7 +37,7 @@ export default function SignupScreen() {
         return;
       }
       try{
-       const {data} = await Axios.post('/api/users/signup', {
+       const {data} = await http.post('/api/users/signup', {
         Name,
         email,
         password,

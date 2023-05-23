@@ -1,4 +1,4 @@
-import axios from 'axios'
+
 import React, { useContext, useEffect, useReducer } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useNavigate } from 'react-router-dom'
@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button'
 import MessageBox from '../Components/MessageBox'
 import {Store} from '../Store'
 import { getError } from '../Utils'
+import http from '../axios'
 
 
 
@@ -43,7 +44,7 @@ export default function OrderHistoryScreen() {
           dispatch({type: 'FETCH_REQUEST'});
           try{
             
-            const {data} = await axios.get(
+            const {data} = await http.get(
               `/api/orders/mine`,
              
               {

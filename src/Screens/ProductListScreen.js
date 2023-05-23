@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useReducer } from 'react';
-import axios from 'axios';
+
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -9,6 +9,7 @@ import { Store } from '../Store';
 import LoadingBox from '../Components/LoadingBox';
 import MessageBox from '../Components/MessageBox';
 import { getError } from '../Utils';
+import http from '../axios';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -80,7 +81,7 @@ export default function ProductListScreen() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(`/api/products/admin?page=${page} `, {
+        const { data } = await http.get(`/api/products/admin?page=${page} `, {
           
           headers: { Authorization: `Bearer ${userInfo.token}` },
           
@@ -102,7 +103,7 @@ export default function ProductListScreen() {
     if (window.confirm('Are you sure to create?')) {
       try {
         dispatch({ type: 'CREATE_REQUEST' });
-        const { data } = await axios.post(
+        const { data } = await http.post(
           '/api/products',
           {},
           {
@@ -124,7 +125,7 @@ export default function ProductListScreen() {
   const deleteHandler = async (id) => {
     if (window.confirm('Are you sure to delete?')) {
       try {
-        await axios.delete(`/api/products/${id}`, {
+        await http.delete(`/api/products/${id}`, {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         });
         toast.success('product deleted successfully');

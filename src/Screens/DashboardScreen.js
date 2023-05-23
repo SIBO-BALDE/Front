@@ -2,7 +2,6 @@
 
 import React, { useContext, useEffect, useReducer } from 'react';
 import Chart from 'react-google-charts';
-import axios from 'axios';
 import { Store } from '../Store';
 import { getError } from '../Utils';
 import LoadingBox from '../Components/LoadingBox'
@@ -10,6 +9,7 @@ import MessageBox from '../Components/MessageBox'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import http from '../axios';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -38,7 +38,7 @@ export default function DashboardScreen() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get('/api/orders/summary', {
+        const { data } = await http.get('/api/orders/summary', {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         });
         dispatch({ type: 'FETCH_SUCCESS', payload: data });

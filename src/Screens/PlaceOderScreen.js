@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useReducer } from 'react'
-import Axios from 'axios'
+
 import { Helmet } from 'react-helmet-async'
 import CheckoutSteps from '../Components/CheckoutSteps'
 import Row from 'react-bootstrap/Row'
@@ -12,6 +12,7 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import {getError} from '../Utils';
 import {toast} from 'react-toastify'
 import LoadingBox from '../Components/LoadingBox';
+import http from '../axios'
  const reducer = (state,action) => {
     switch (action.type){
         case 'CREATE_REQUEST':
@@ -47,7 +48,7 @@ export default function PlaceOderScreen() {
 
         try {
         dispatch({type:'CREATE_REQUEST'});
-        const {data} = await Axios.post(
+        const {data} = await http.post(
             '/api/orders',
             {
                 orderItems:cart.cartItems,

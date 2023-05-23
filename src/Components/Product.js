@@ -3,8 +3,9 @@ import Card from 'react-bootstrap/Card';
 import Button from'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import Rating from './Rating';
-import axios from 'axios';
+
 import { Store } from '../Store';
+import http from '../axios';
 
  function Product(props) {
     const{product}= props;
@@ -16,7 +17,7 @@ import { Store } from '../Store';
     const addToCartHandler = async (item) => {
       const existItem = cartItems.find((x) => x._id ===product._id);
       const quantity = existItem ? existItem.quantity + 1 : 1;
-      const {data} = await axios.get(`/api/products/${item._id}`);
+      const {data} = await http.get(`/api/products/${item._id}`);
       if(data.countInStock < quantity){
           window.alert('sorry. Product is out of stock');
           return;

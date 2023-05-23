@@ -1,7 +1,6 @@
 import React, { useEffect, useReducer, useState } from 'react'
 import {Link, useNavigate ,useLocation} from 'react-router-dom'
 import { getError } from '../Utils';
-import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
 import Row from 'react-bootstrap/Row';
@@ -14,6 +13,7 @@ import Product from '../Components/Product';
 
 
 import { LinkContainer } from 'react-router-bootstrap';
+import http from '../axios';
 
 
 
@@ -142,7 +142,7 @@ export default function SearchScreen() {
     useEffect(()=>{
         const fetchData = async () => {
             try{
-                const {data} = await axios.get(
+                const {data} = await http.get(
                    
                     `/api/products/search/?page=${page}&query=${query}&category=${category}&prix=${prix}&rating=${rating}&order=${order}`
                 );
@@ -165,7 +165,7 @@ export default function SearchScreen() {
     useEffect(()=>{
         const fetchCategories = async () => {
             try{
-                const {data} = await axios.get(
+                const {data} = await http.get(
                     `/api/products/categories` );
                  setCategories(data);
                 

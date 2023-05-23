@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useReducer } from 'react';
 //import { useState } from 'react';
-import axios from 'axios'
+
 import {  } from 'react-router-dom';
 import logger from 'use-reducer-logger';
 import Row from 'react-bootstrap/Row';
@@ -11,6 +11,7 @@ import MessageBox from '../Components/MessageBox';
 import { Helmet } from 'react-helmet-async';
 import Carroussel from '../Carroussel';
 import Container from 'react-bootstrap/esm/Container';
+import http from '../axios';
 
 // On vas commenter le produit data parrceque c'est un statique data du frontend
 //import data from '../data';
@@ -71,7 +72,7 @@ import Container from 'react-bootstrap/esm/Container';
      const fetchData = async () => {
       dispatch({type: 'FETCH_REQUEST'});
       try{
-        const result = await axios.get('/api/products');
+        const result = await http.get('/api/products');
         dispatch({type: 'FETCH_SUCCESS', payload:result.data });
       }catch(err){
         dispatch({type: 'FETCH_FAIL', payload:err.message});
