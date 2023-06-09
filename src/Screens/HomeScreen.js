@@ -2,7 +2,6 @@ import React, { Fragment, useEffect, useReducer } from 'react';
 //import { useState } from 'react';
 
 import {  } from 'react-router-dom';
-import logger from 'use-reducer-logger';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Product from '../Components/Product';
@@ -56,7 +55,7 @@ import axios from 'axios'
   //Il accept deux parametre une functin et un array(tableau)
   // On remplace le useState par useReducer
   //We use use-reduder-logger  to change the state  in react
-  const[{loading, error, products}, dispatch] = useReducer(logger(reducer), {
+  const[{loading, error, products}, dispatch] = useReducer(reducer, {
     products: [],
     loading:true, 
     error:'',
