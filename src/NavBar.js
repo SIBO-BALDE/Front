@@ -14,7 +14,7 @@ import {AiOutlineShoppingCart} from 'react-icons/ai'
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/ReactToastify.css';
 import {Link } from 'react-router-dom'
-import http from './axios';
+import axios from 'axios';
 
 
 export default function NavBar() {
@@ -39,7 +39,7 @@ export default function NavBar() {
     useEffect(()=> {
       const fetchCategories = async () => {
         try{
-          const {data} = await http.get(`/api/products/categories`);
+          const {data} = await axios.get(`/api/products/categories`);
           setCategories(data);
         }catch(err) {
           toast.error(getError(err));

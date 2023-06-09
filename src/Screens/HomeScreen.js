@@ -11,7 +11,8 @@ import MessageBox from '../Components/MessageBox';
 import { Helmet } from 'react-helmet-async';
 import Carroussel from '../Carroussel';
 import Container from 'react-bootstrap/esm/Container';
-import http from '../axios';
+import axios from 'axios'
+
 
 // On vas commenter le produit data parrceque c'est un statique data du frontend
 //import data from '../data';
@@ -72,7 +73,7 @@ import http from '../axios';
      const fetchData = async () => {
       dispatch({type: 'FETCH_REQUEST'});
       try{
-        const result = await http.get('/api/products');
+        const result = await axios.get('/api/products');
         dispatch({type: 'FETCH_SUCCESS', payload:result.data });
       }catch(err){
         dispatch({type: 'FETCH_FAIL', payload:err.message});

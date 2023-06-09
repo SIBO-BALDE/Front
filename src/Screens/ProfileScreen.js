@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { getError } from '../Utils';
 import { toast } from 'react-toastify';
-import http from '../axios';
+import axios from 'axios';
 
 
 
@@ -38,7 +38,7 @@ export default function ProfileScreen() {
     //pour eviter le rafraichissement par défaut de la fonction
     e.preventDefault();
     try{
-        const {data} = await http.put(
+        const {data} = await axios.put(
             '/api/users/profile',
           
             {

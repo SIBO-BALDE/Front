@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button'
 import MessageBox from '../Components/MessageBox'
 import {Store} from '../Store'
 import { getError } from '../Utils'
-import http from '../axios'
+import axios from 'axios'
 
 
 
@@ -44,7 +44,7 @@ export default function OrderHistoryScreen() {
           dispatch({type: 'FETCH_REQUEST'});
           try{
             
-            const {data} = await http.get(
+            const {data} = await axios.get(
               `/api/orders/mine`,
              
               {

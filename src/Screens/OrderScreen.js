@@ -13,7 +13,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { Link } from 'react-router-dom';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import { toast } from 'react-toastify';
-import http from '../axios';
+import axios from 'axios';
 
 function reducer(state,action){
   switch (action.type) {
@@ -70,7 +70,7 @@ export default function OrderScreen() {
       return actions.order.capture().then(async function (details) {
         try{
           dispatch ({type:'PAY_REQUEST'});
-          const {data} = await http.put(
+          const {data} = await axios.put(
             `/api/orders/${order._id}/pay`,
             details,
             {
@@ -96,7 +96,7 @@ export default function OrderScreen() {
       const fetchOrder = async () => {
         try {
           dispatch({type:'FETCH_REQUEST'});
-          const {data} = await http.get(`/api/orders/${orderId}` , {
+          const {data} = await axios.get(`/api/orders/${orderId}` , {
             headers: {authorization: `Bearer ${userInfo.token}`},
           });
           dispatch({type:'FETCH_SUCCESS', payload: data});
@@ -115,7 +115,7 @@ export default function OrderScreen() {
      }else{
 
       const loadPaypalScript = async () => {
-        const {data:clientId} = await http.get('/api/keys/paypal',{ 
+        const {data:clientId} = await axios.get('/api/keys/paypal',{ 
         headers: {authorization: `Bearer ${userInfo.token}`},
       });
       paypalDispatch({

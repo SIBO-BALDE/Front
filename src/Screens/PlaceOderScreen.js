@@ -12,7 +12,7 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import {getError} from '../Utils';
 import {toast} from 'react-toastify'
 import LoadingBox from '../Components/LoadingBox';
-import http from '../axios'
+import axios from 'axios'
  const reducer = (state,action) => {
     switch (action.type){
         case 'CREATE_REQUEST':
@@ -48,7 +48,7 @@ export default function PlaceOderScreen() {
 
         try {
         dispatch({type:'CREATE_REQUEST'});
-        const {data} = await http.post(
+        const {data} = await axios.post(
             '/api/orders',
             {
                 orderItems:cart.cartItems,

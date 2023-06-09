@@ -10,7 +10,7 @@ import { Helmet } from 'react-helmet-async';
 import LoadingBox from '../Components/LoadingBox';
 import MessageBox from '../Components/MessageBox';
 import Button from 'react-bootstrap/Button';
-import http from '../axios';
+import axios from 'axios';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -68,7 +68,7 @@ export default function ProductEditScreen() {
     const fetchData = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await http.get(`/api/products/${productId}`);
+        const { data } = await axios.get(`/api/products/${productId}`);
         setName(data.Name);
         setSlug(data.slug);
         setPrix(data.prix);
@@ -93,7 +93,7 @@ export default function ProductEditScreen() {
     e.preventDefault();
     try {
       dispatch({ type: 'UPDATE_REQUEST' });
-      await http.put(
+      await axios.put(
         `/api/products/${productId}`,
         {
           _id: productId,
@@ -127,7 +127,7 @@ export default function ProductEditScreen() {
     bodyFormData.append('file', file);
     try {
       dispatch({ type: 'UPLOAD_REQUEST' });
-      const { data } = await http.post('/api/upload', bodyFormData, {
+      const { data } = await axios.post('/api/upload', bodyFormData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           authorization: `Bearer ${userInfo.token}`,

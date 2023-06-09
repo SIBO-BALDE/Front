@@ -8,7 +8,7 @@ import {Helmet} from 'react-helmet-async'
 import { Store } from '../Store'
 import { toast } from 'react-toastify'
 import { getError } from '../Utils'
-import http from '../axios'
+import axios from 'axios'
 
 
 
@@ -37,7 +37,7 @@ export default function SignupScreen() {
         return;
       }
       try{
-       const {data} = await http.post('/api/users/signup', {
+       const {data} = await axios.post('/api/users/signup', {
         Name,
         email,
         password,

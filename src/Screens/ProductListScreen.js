@@ -9,7 +9,7 @@ import { Store } from '../Store';
 import LoadingBox from '../Components/LoadingBox';
 import MessageBox from '../Components/MessageBox';
 import { getError } from '../Utils';
-import http from '../axios';
+import axios from 'axios';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -81,7 +81,7 @@ export default function ProductListScreen() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await http.get(`/api/products/admin?page=${page} `, {
+        const { data } = await axios.get(`/api/products/admin?page=${page} `, {
           
           headers: { Authorization: `Bearer ${userInfo.token}` },
           
@@ -103,7 +103,7 @@ export default function ProductListScreen() {
     if (window.confirm('Are you sure to create?')) {
       try {
         dispatch({ type: 'CREATE_REQUEST' });
-        const { data } = await http.post(
+        const { data } = await axios.post(
           '/api/products',
           {},
           {
@@ -125,7 +125,7 @@ export default function ProductListScreen() {
   const deleteHandler = async (id) => {
     if (window.confirm('Are you sure to delete?')) {
       try {
-        await http.delete(`/api/products/${id}`, {
+        await axios.delete(`/api/products/${id}`, {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         });
         toast.success('product deleted successfully');

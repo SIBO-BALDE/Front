@@ -13,7 +13,7 @@ import Product from '../Components/Product';
 
 
 import { LinkContainer } from 'react-router-bootstrap';
-import http from '../axios';
+import axios from 'axios';
 
 
 
@@ -142,7 +142,7 @@ export default function SearchScreen() {
     useEffect(()=>{
         const fetchData = async () => {
             try{
-                const {data} = await http.get(
+                const {data} = await axios.get(
                    
                     `/api/products/search/?page=${page}&query=${query}&category=${category}&prix=${prix}&rating=${rating}&order=${order}`
                 );
@@ -165,7 +165,7 @@ export default function SearchScreen() {
     useEffect(()=>{
         const fetchCategories = async () => {
             try{
-                const {data} = await http.get(
+                const {data} = await axios.get(
                     `/api/products/categories` );
                  setCategories(data);
                 

@@ -13,7 +13,7 @@ import LoadingBox from "../Components/LoadingBox";
 import MessageBox from "../Components/MessageBox";
 import { getError } from "../Utils";
 import { Store } from "../Store";
-import http from "../axios";
+import axios from "axios";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -54,7 +54,7 @@ function ProductScreen() {
     const fetchData = async () => {
       dispatch({ type: "FETCH_REQUEST" });
       try {
-        const result = await http.get(`/api/products/slug/${slug}`);
+        const result = await axios.get(`/api/products/slug/${slug}`);
         dispatch({ type: "FETCH_SUCCESS", payload: result.data });
       } catch (err) {
         dispatch({ type: "FETCH_FAIL", payload: getError(err) });
@@ -73,7 +73,7 @@ function ProductScreen() {
     // Ici on vérifiet si l'item exist dans le pagner si c'est le cas on augmente juste la quantité et l'item elle meme sinon on ajoute l'item
     const existItem = cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
-    const { data } = await http.get(`/api/products/${product._id}`);
+    const { data } = await axios.get(`/api/products/${product._id}`);
     // If la quantité in the stock is less thant added in the cart alert this message:'sorry. Product is out of stock'
     if (data.CountInStock < quantity) {
       window.alert("sorry. Product is out of stock");
