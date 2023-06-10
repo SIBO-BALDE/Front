@@ -144,8 +144,10 @@ export default function NavBar() {
           <Nav.Item>
            <strong >Categories</strong>
           </Nav.Item >
-          {categories?.map((category )=> (
-           <Nav.Item key={category}> 
+          {categories?.map((category )=> {
+
+          
+            return <Nav.Item key={category}> 
            <LinkContainer 
            // to={`/search?category=${category}`}
            to={{pathName:`/search?category=${category}`}}
@@ -157,7 +159,7 @@ export default function NavBar() {
            </LinkContainer>
            </Nav.Item>
 
-          ))}
+       })}
        </Nav> 
 
       </div>
