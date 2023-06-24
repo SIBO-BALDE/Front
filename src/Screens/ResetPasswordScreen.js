@@ -1,44 +1,43 @@
-
-import { useContext, useEffect, useState } from 'react';
-import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import { Helmet } from 'react-helmet-async';
-import { useNavigate, useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { Store } from '../Store';
-import { getError } from '../Utils';
-import axios from 'axios';
+import { useContext, useEffect, useState } from "react";
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import { Helmet } from "react-helmet-async";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import { Store } from "../Store";
+import { getError } from "../Utils";
+import axiosInstance from "../config/axios";
 
 export default function ResetPasswordScreen() {
   const navigate = useNavigate();
   const { token } = useParams();
 
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const { state } = useContext(Store);
   const { userInfo } = state;
 
   useEffect(() => {
     if (userInfo || !token) {
-      navigate('/');
+      navigate("/");
     }
   }, [navigate, userInfo, token]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      toast.error('Passwords do not match');
+      toast.error("Passwords do not match");
       return;
     }
     try {
-      await axios.post('/api/users/reset-password', {
+      await axiosInstance.post("/users/reset-password", {
         password,
         token,
       });
-      navigate('/signin');
-      toast.success('Password updated successfully');
+      navigate("/signin");
+      toast.success("Password updated successfully");
     } catch (err) {
       toast.error(getError(err));
     }

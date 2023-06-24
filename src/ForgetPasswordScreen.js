@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Store } from  '../src/Store'
 import { getError } from '../src/Utils'
-import axios from "axios";
+import axiosInstance from './config/axios';
 
 export default function ForgetPasswordScreen() {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ export default function ForgetPasswordScreen() {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('/api/users/forget-password', {
+      const { data } = await axiosInstance.post('/users/forget-password', {
         email,
       });
       toast.success(data.message);
