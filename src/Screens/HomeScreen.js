@@ -62,13 +62,7 @@ import axios from 'axios'
   })
  // const [products, setProducts] = useState([]);
   useEffect(() => {
-        //L’idée principale  de l’asynchrone est que le reste du script puisse continuer à s’exécuter pendant qu’une certaine opération plus longue ou demandant une réponse / valeur est en cours.
-        // Cela permet un affichage plus rapide des pages et en une meilleure expérience utilisateur.
-       //Le premier outil utilisé en JavaScript pour générer du code asynchrone a été les fonctions de rappel. 
-      //En effet, une fonction de rappel ou « callback » en anglais est une fonction qui va pouvoir être rappelée (« called back ») à un certain moment et / ou si certaines conditions sont réunies.
-      //L’idée ici est de passer une fonction de rappel en argument d’une autre fonction. 
-      //Cette fonction de rappel va être rappelée à un certain moment par la fonction principale et pouvoir s’exécuter, sans forcément bloquer le reste du script tant que ce n’est pas le cas.
-      //fetchData is a async funtion,Un objet Set permet de stocker un ensemble de valeurs uniques de n'importe quel type, qu'il s'agisse de valeurs primitives ou d'objets.
+       
      const fetchData = async () => {
       dispatch({type: 'FETCH_REQUEST'});
       try{
