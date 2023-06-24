@@ -10,7 +10,7 @@ import MessageBox from '../Components/MessageBox';
 import { Helmet } from 'react-helmet-async';
 import Carroussel from '../Carroussel';
 import Container from 'react-bootstrap/esm/Container';
-import axios from 'axios'
+import axiosInstance from '../config/axios';
 
 
 // On vas commenter le produit data parrceque c'est un statique data du frontend
@@ -66,7 +66,7 @@ import axios from 'axios'
      const fetchData = async () => {
       dispatch({type: 'FETCH_REQUEST'});
       try{
-        const result = await axios.get('https://backend-8po1.onrender.com/api/products');
+        const result = await axiosInstance.get('/products');
         dispatch({type: 'FETCH_SUCCESS', payload:result.data });
       }catch(err){
         dispatch({type: 'FETCH_FAIL', payload:err.message});

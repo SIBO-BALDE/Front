@@ -1,4 +1,3 @@
-
 // import React, { useContext, useEffect, useRef, useState } from 'react';
 // import {
 //   LoadScript,
@@ -45,7 +44,7 @@
 //   };
 //   useEffect(() => {
 //     const fetch = async () => {
-//       const { data } = await axios('/api/keys/google', {
+//       const { data } = await axios('/keys/google', {
 //         headers: { Authorization: `BEARER ${userInfo.token}` },
 //       });
 //       setGoogleApiKey(data.key);
