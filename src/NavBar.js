@@ -145,8 +145,6 @@ export default function NavBar() {
            <strong >Categories</strong>
           </Nav.Item >
           {categories?.map((category )=> {
-
-          
             return <Nav.Item key={category}> 
            <LinkContainer 
            // to={`/search?category=${category}`}
