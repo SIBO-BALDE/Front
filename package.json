@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "proxy": "https://back-end-steel.vercel.app/",
+  "proxy": "https://backend-8po1.onrender.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
