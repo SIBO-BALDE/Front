@@ -75,7 +75,7 @@ export default function PlaceOderScreen() {
       if (!cart.paymentMethod) {
         navigate("/payment");
       }
-    }, [cart, navigate]);
+    }, []);
   };
   return (
     <div>

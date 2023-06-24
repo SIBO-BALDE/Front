@@ -14,6 +14,7 @@ export default function ProfileScreen() {
   const [email, setEmail] = useState(userInfo.email);
   const [password, setPassWord] = useState("");
   const [confirmpassword, setConfirmPassWord] = useState("");
+  console.log(confirmpassword);
 
   const reducer = (state, action) => {
     switch (action.type) {
@@ -31,6 +32,8 @@ export default function ProfileScreen() {
   const [{ loadingUpdate }, dispatch] = useReducer(reducer, {
     loadingUpdate: false,
   });
+  console.log(loadingUpdate);
+
   const submitHandler = async (e) => {
     //pour eviter le rafraichissement par défaut de la fonction
     e.preventDefault();
